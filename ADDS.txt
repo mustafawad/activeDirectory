@@ -1,0 +1,20 @@
+Replication health:
+	Repadmin /showrepl
+	Repadmin /showrepl domainController
+	Repadmin /replsummary
+	Repadmin /replsummary /errorsonly
+
+
+We can check if SYSVOL replication uses DFSR by using:
+	dfsrmig /getmigrationstate
+
+Event Viewer | Application and Service Logs | Directory Services
+	1925, 1988, 2087, 2088, 1311
+
+Check what the additional roles installed in the domain controller are:
+	Get-WindowsFeature -ComputerName DC01 | Where Installed
+
+Find additional software installed in a domain controller by using:
+	Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | select DisplayName
+
+Dcdiag /e
