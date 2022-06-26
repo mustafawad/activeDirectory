@@ -1,5 +1,7 @@
 https://www.nakivo.com/blog/how-to-request-ssl-certificates-for-hyper-v/
 
+https://michaelfirsov.wordpress.com/hyper-v-replica-in-windows-server-2016-configuring-certificate-based-authentication-part1/
+
  - Configure hostnames on both Hyper-V servers. A Hyper-V server role must be enabled.
  - Enable HTTPS traffic and required inbound connections in Windows firewall.
  - Create and configure certificates on the first server.Export/import certificates.
