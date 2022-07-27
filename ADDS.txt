@@ -1,8 +1,15 @@
+
+Dcdiag /e
+dcdiag /test:dns
+
 Replication health:
 	Repadmin /showrepl
 	Repadmin /showrepl domainController
 	Repadmin /replsummary
 	Repadmin /replsummary /errorsonly
+
+	Get-ADReplicationFailure -Target domainname.com -Scope Domain
+	Get-ADReplicationFailure -Target domainname.com -Scope Forest
 
 
 We can check if SYSVOL replication uses DFSR by using:

@@ -1,18 +1,20 @@
 - Prepare the physical/virtual resources for the domain controller FSMO holders
----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 make sure SYSVOL is using DFSR instead of FRS
 dfsrmig /getmigrationstate
 If the command returns state as “eliminated“, it means DFSR is already in use for SYSVOL replication.
----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 to verify the current FSMO role holder.
 Get-ADDomain | Select-Object InfrastructureMaster, RIDMaster, PDCEmulator
 Get-ADForest | Select-Object DomainNamingMaster, SchemaMaster
-----------------------------------------------------------------------------------------------------------------------------------------
-Verification
+-------------------------------------------------------------------------------
+Verify functional level:
 Get-ADDomain | fl Name,DomainMode
 Get-ADForest | fl Name,ForestMode
-----------------------------------------------------------------------------------------------------------------------------------------
-
+-------------------------------------------------------------------------------
+Raise the functional level:
+Active Directory Domains and Trusts. Right-click on the domain name, and select Raise Domain Functional Level.
+Active Directory Domains and Trusts. Right-click on the root of the snap-in, and select Raise Forest Functional Level.
 
 
 
