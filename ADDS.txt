@@ -24,4 +24,4 @@ Check what the additional roles installed in the domain controller are:
 Find additional software installed in a domain controller by using:
 	Get-ItemProperty HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | select DisplayName
 
-Dcdiag /e
+
