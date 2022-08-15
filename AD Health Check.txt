@@ -2,7 +2,7 @@ Repadmin:
  - repadmin /showrepl
  - repadmin /showrepl DC1
  - repadmin /showrepl /errorsonly
- -  repadmin /replsummary
+ - repadmin /replsummary
  - repadmin /syncall
  - repadmin /syncall dc2
 
