@@ -1,0 +1,29 @@
+# Set ntp source on PDC
+
+net stop w32time
+w32tm /config /syncfromflags:manual /manualpeerlist:"0.asia.pool.ntp.org"
+net start w32time
+w32tm /config /update
+w32tm /resync /rediscover
+
+-----------------------------
+# Main NTP servers
+
+server 0.pool.ntp.org
+server 1.pool.ntp.org
+server 2.pool.ntp.org
+server 3.pool.ntp.org
+
+-----------------------------
+# Time quieries 
+
+w32tm /query /configuration
+w32tm /query /status
+w32tm /query /source
+Time /T 
+
+-----------------------------
+# Fix time on client machine
+
+w32tm /resync
+net time \\pdc /set
