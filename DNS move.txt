@@ -40,8 +40,7 @@ netdiag /fix
 
 14- Verify that the SOA resource records on each zone contain the correct name for the primary server and that the NS resource records for the zone(s) are correct.
 
-- Note
-
+- Note:
 The steps outlined in this article don't migrate the following DNS server settings:
 Interfaces
 Forwarders
