@@ -1,0 +1,52 @@
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/move-zone-files-dns-server
+
+How to move Windows DNS zones to another Windows server:
+
+- Windows DNS Server service must be installed on a new Windows Server. The DNS Server service should not be configured yet.
+
+1- On the DNS server that is currently hosting the DNS zone(s), change any Active Directory-integrated zones to standard primary. This action creates the zone files that are needed for the destination DNS server.
+
+2- Stop the DNS Server service on both DNS servers.
+
+3- Manually copy the entire contents (subfolders included) of the %SystemRoot%\System32\DNS folder from the source server to the destination server.
+
+( Recommended:  back up the registry before you modify it)
+
+4- On the current DNS server, start Registry Editor (Regedit.exe).
+
+5- Locate and click the following registry subkey:
+
+HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DNS\Zones
+
+6- Export the Zones entry to a registry file.
+
+7- Locate and click the following registry subkey:
+
+HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\DNS Server\Zones
+
+8- Export the Zones entry to a registry file.
+
+9- On the destination DNS server, double-click each registry file to import the Zones subkeys into the registry.
+
+10- Bring the current DNS server down and transfer its IP address to the destination DNS server.
+
+11- On the destination DNS server, start the DNS Server service. To initiate the registration of the server's A and PTR resource records, run the following command at a command prompt:
+ipconfig /registerdns
+
+12- If this server is also a domain controller, stop and restart the Net Logon service to register the Service (SRV) records, or run the following command at a command prompt:
+netdiag /fix
+
+13- The standard zones that were previously Active Directory-integrated can be converted back to Active Directory-integrated on the replacement DNS server if it's a domain controller.
+
+14- Verify that the SOA resource records on each zone contain the correct name for the primary server and that the NS resource records for the zone(s) are correct.
+
+- Note
+
+The steps outlined in this article don't migrate the following DNS server settings:
+Interfaces
+Forwarders
+Advanced
+Root Hints
+Logging
+Security
+Any specific registry setting made under any keys other than the key that is specified in step 5 and step 7
