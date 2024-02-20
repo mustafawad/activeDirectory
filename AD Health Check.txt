@@ -14,6 +14,7 @@ DCDiag (dcdiag.exe):
 	/v 	Verbose mode. Display detailed information on each test.
 	/c 	Comprehensive mode. Run all tests except DCPromo, RegisterInDNS, Topology, CutoffServers, and OutboundSecureChannels.
 dcdiag /test:DNS
+dcdiag /test:services /v
 dcdiag /v /c /d /e
 
 
