@@ -1,3 +1,8 @@
+Get-ADForest
+Get-ADDomain
+Get-ADDomainController -Discover
+
+
 Repadmin:
  - repadmin /showrepl
  - repadmin /showrepl DC1
