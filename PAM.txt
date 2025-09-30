@@ -1,0 +1,15 @@
+Enable the expiring links feature. This can be enabled using the following command:
+
+Enable-ADOptionalFeature 'Privileged Access Management Feature' -Scope ForestOrConfigurationSet -Target domainname.com
+-------------------------------------------------------------------------------------------------------
+Get-ADGroupMember "Domain Admins"
+-------------------------------------------------------------------------------------------------------
+Add user1 to the domain admin group for 60 minutes:
+
+Add-ADGroupMember -Identity 'Domain Admins' -Members 'user1' -MemberTimeToLive (New-TimeSpan -Minutes 60)
+-------------------------------------------------------------------------------------------------------
+Verify the remaining TTL value for the group membership using the following command:
+
+Get-ADGroup 'Domain Admins' -Property member -ShowMemberTimeToLive
+-------------------------------------------------------------------------------------------------------
+
