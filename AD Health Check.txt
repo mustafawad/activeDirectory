@@ -2,6 +2,7 @@ Get-ADForest
 Get-ADDomain
 Get-ADDomainController -Discover
 
+Get-GPOReport | Export-Excel C:\Temp\GPOs.xlsx
 
 Repadmin:
  - repadmin /showrepl
